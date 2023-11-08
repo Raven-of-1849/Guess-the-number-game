@@ -42,8 +42,8 @@ int main() {
         
                             if (userNumber>= 0 && userNumber <=20) {
                                         --remainingGuesses; // Subtract one guess per loop
-                                        if(remainingGuesses == 0) { 
-                                                    printf("Game over!");
+                                        if(remainingGuesses == 0 && userNumber!=randomNumber ) {  // needs the && operator to prevent game over even if correct
+                                                    printf("Game over, You Suck!");
                                                     break;
                                                 
                                             }
