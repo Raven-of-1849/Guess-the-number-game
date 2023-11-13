@@ -3,6 +3,9 @@
 #include <time.h>
 #include <string.h>
 
+#define MAX_NUMBER 20
+
+
 int main() {
         
         float tempNum;              // User entered input
@@ -12,12 +15,21 @@ int main() {
         
         time_t t; //Time variable
         srand( (unsigned) time(&t) );       // initialize the random number generator
-        int randomNumber =  rand() % 21;    // Get random number from 0-20
+        int randomNumber =  rand() % (MAX_NUMBER + 1);    // Get random number from 0-20
+       
+       
+         // Clear buffer function //
+        
+        void clearInputBuffer() {
+            
+             while (getchar() != '\n') {} // Clear input buffer
+        }
+ 
+        // User Message //
         
         printf("\nGUESS THE CORRECT NUMBER!\n\n The game is simple, guess the correct whole between 0-20\n\n Anything other than numbers will be ignored! \n\n What is the first guess?\n\n");
         printf("Remaining guesses: %d\n", guessCount);
  
-
         //** While loop to check user nuber of guesses **//
         
         while(guessCount > 0) {
@@ -39,7 +51,7 @@ int main() {
                                                         
                                                                 if (guessCount == 0 && userNumber!=randomNumber ) {  // needs the && operator to prevent user from loosing even if correct
 
-                                                                            printf("Game over, You Suck!");
+                                                                            printf("\nGAME OVER!");
                                                                             break;
                                                                 
                                                                 }
@@ -57,12 +69,14 @@ int main() {
                                                                             if (userNumber > randomNumber) {
                                                                                     
                                                                                     printf("My number is lower!\n");
-                                                                                    while (getchar() != '\n') {} // Clear input buffer
+                                                                                    clearInputBuffer();
+
                                             
                                                                             }  else {
                                                                             
                                                                                     printf("My number is higher!\n");
-                                                                                    while (getchar() != '\n') {} // Clear input buffer
+                                                                                    clearInputBuffer();
+
                     
                                                                             }
                                                         
@@ -78,14 +92,15 @@ int main() {
                                             } else {
                                                 
                                                     printf("Error: Decimal number entered. Enter a whole number.\n");
-                                                    while (getchar() != '\n') {} // Clear input buffer
+                                                    clearInputBuffer();
+
                                             
                                             }
                                     
                         } else {
                             
                                     printf("Error: Invalid input. Please enter a valid whole number.\n");
-                                    while (getchar() != '\n') {} // Clear input buffer
+                                    clearInputBuffer();
                                     
                         }
                     
